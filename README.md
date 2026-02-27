@@ -6,13 +6,12 @@ A real-world data pipeline that streams product recall data from a public API th
 
 ## Architecture
 
-![Architecture Diagram] 
 <img width="1758" height="808" alt="image" src="https://github.com/user-attachments/assets/e4f75d8a-0f98-40fd-a4df-9d6b0192da53" />
 
 
 | Component | Technology | Role |
 |-----------|------------|------|
-| Data Source | RappelConso API (French Gov) | ~10,000 product recall records |
+| Data Source | RappelConso API (French Gov) | more than 10,000 product recall records |
 | Message Broker | Apache Kafka + Kafka UI | Stream ingestion & buffering |
 | Processing | Apache Spark (PySpark) | Transform & load data |
 | Storage | PostgreSQL + pgAdmin 4 | Persistent data storage |
