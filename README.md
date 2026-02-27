@@ -38,12 +38,12 @@ RappelConso API
    PostgreSQL: rappel_conso_table
 ```
 
-## Airflow DAG Tasks
+## ⏱️ Airflow DAG Tasks
 
-| Task | Description |
-|---|---|
-| `kafka_data_stream` | A Python script fetches product recall records from RappelConso API and produces messages to a Kafka topic. It tracks the last processed date in data/last_processed.json to avoid re-ingesting old records on subsequent runs. |
-| `pyspark_consumer` | A PySpark job consumes messages from the Kafka topic, applies a schema transformation, deduplicates against existing records, and writes new data to PostgreSQL via JDBC. |
+| Task | Input / Output | Description |
+|---|---|---|
+| `kafka_data_stream` | Input: RappelConso API → Output: Kafka topic `rappel_conso` | A Python script fetches product recall records from RappelConso API and produces messages to a Kafka topic. It tracks the last processed date in `data/last_processed.json` to avoid re-ingesting old records on subsequent runs. |
+| `pyspark_consumer` | Input: Kafka topic `rappel_conso` → Output: PostgreSQL `rappel_conso_table` | A PySpark job consumes messages from the Kafka topic, applies a schema transformation, deduplicates against existing records, and writes new data to PostgreSQL via JDBC. |
 
 ---
 
