@@ -38,9 +38,15 @@ RappelConso API
    PostgreSQL: rappel_conso_table
 ```
 
-**Task 1 — `kafka_data_stream`**: A Python script fetches product recall records from the API and produces messages to a Kafka topic. It tracks the last processed date in `data/last_processed.json` to avoid re-ingesting old records on subsequent runs.
+## ⏱️ Airflow DAG Tasks
 
-**Task 2 — `pyspark_consumer`**: A PySpark job consumes messages from the Kafka topic, applies a schema transformation, deduplicates against existing records, and writes new data to PostgreSQL via JDBC.
+| Task | Description |
+
+|---|---|---|
+
+| `kafka_data_stream` | A Python script fetches product recall records from RappelConso API and produces messages to a Kafka topic. It tracks the last processed date in data/last_processed.json to avoid re-ingesting old records on subsequent runs. |
+
+| `pyspark_consumer` | A PySpark job consumes messages from the Kafka topic, applies a schema transformation, deduplicates against existing records, and writes new data to PostgreSQL via JDBC. |
 
 ---
 
@@ -132,13 +138,16 @@ Open Airflow UI at **http://localhost:8080** (username: `airflow`, password: `ai
 
 You're supposed to see a DAG named `` kafka_spark_dag ``.
 
+<img width="504" height="147" alt="image" src="https://github.com/user-attachments/assets/e105581c-4028-49be-bd32-d35f6e9d1ee9" />
+
+
 ### 9. Trigger the pipeline
 
-In the Airflow UI, enable the `kafka_spark_dag` and click **Trigger DAG**. The pipeline will run both tasks sequentially and load ~10,000 records into PostgreSQL.
+In the Airflow UI, enable the `kafka_spark_dag` and click **Trigger DAG**. The pipeline will run both tasks sequentially and load more than 10,000 records into PostgreSQL.
 
 ---
 
-## 🔍 Verify Results
+## Verify Results
 
 Open pgAdmin 4 and query the database:
 
@@ -154,7 +163,7 @@ LIMIT 10;
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── airflow/
@@ -184,7 +193,3 @@ LIMIT 10;
 ```
 
 ---
-
-## 📚 Credits
-
-Based on the original project by [Hamza Gharbi](https://github.com/HamzaG737/data-engineering-project).
