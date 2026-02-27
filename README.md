@@ -6,7 +6,9 @@ A real-world data pipeline that streams product recall data from a public API th
 
 ## Architecture
 
-![Architecture Diagram](pipeline_diagram.svg)
+![Architecture Diagram] 
+<img width="1758" height="808" alt="image" src="https://github.com/user-attachments/assets/e4f75d8a-0f98-40fd-a4df-9d6b0192da53" />
+
 
 | Component | Technology | Role |
 |-----------|------------|------|
