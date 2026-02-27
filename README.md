@@ -8,11 +8,9 @@ A real-world data pipeline that streams product recall data from a public API th
 
 <img width="1758" height="808" alt="image" src="https://github.com/user-attachments/assets/e4f75d8a-0f98-40fd-a4df-9d6b0192da53" />
 
-
-
 | Component | Technology | Role |
 |-----------|------------|------|
-| Data Source | RappelConso API (French Gov) | more than 10,000 product recall records |
+| Data Source | RappelConso API (French Gov) | Provides 10,000+ product recall records |
 | Message Broker | Apache Kafka + Kafka UI | Stream ingestion & buffering |
 | Processing | Apache Spark (PySpark) | Transform & load data |
 | Storage | PostgreSQL + pgAdmin 4 | Persistent data storage |
@@ -38,7 +36,7 @@ RappelConso API
    PostgreSQL: rappel_conso_table
 ```
 
-## ⏱️ Airflow DAG Tasks
+## Airflow DAG Tasks
 
 | Task | Input / Output | Description |
 |---|---|---|
@@ -49,7 +47,7 @@ RappelConso API
 
 ## Tech Stack
 
-- **Apache Kafka** `bitnami/kafka` — distributed message streaming
+- **Apache Kafka** `bitnami/kafka` — distributed message for real-time data streaming
 - **Apache Spark** `bitnami/spark` — structured streaming with PySpark
 - **Apache Airflow** — workflow orchestration with LocalExecutor
 - **PostgreSQL** — relational data storage
@@ -102,6 +100,9 @@ docker network create airflow-kafka
 ```bash
 docker-compose up -d
 ```
+
+<img width="2264" height="606" alt="image" src="https://github.com/user-attachments/assets/92e9662c-e891-47da-b13d-d050835a0b03" />
+
 <img width="504" height="92" alt="image" src="https://github.com/user-attachments/assets/9efc9881-c154-48e4-b0ff-e75e816aab7b" />
 
 Open Kafka UI at **http://localhost:8800** and create a topic named `rappel_conso` 
@@ -141,6 +142,9 @@ You're supposed to see a DAG named `` kafka_spark_dag ``.
 ### 9. Trigger the pipeline
 
 In the Airflow UI, enable the `kafka_spark_dag` and click **Trigger DAG**. The pipeline will run both tasks sequentially and load more than 10,000 records into PostgreSQL.
+
+<img width="1662" height="924" alt="image" src="https://github.com/user-attachments/assets/eda24748-6fbd-46b9-95b9-127637715bee" />
+
 
 ---
 
