@@ -1,12 +1,13 @@
 # End-to-End Data Engineering Pipeline
 
-A real-world data pipeline that streams product recall data from a public API through **Apache Kafka**, processes it with **Apache Spark**, stores it in **PostgreSQL**, and orchestrates everything with **Apache Airflow** — all containerized with **Docker**.
+A real-world data pipeline that streams product recall data from a public API through **Apache Kafka**, processes it with **Apache Spark**, stores it in **PostgreSQL**, and orchestrates everything with **Apache Airflow**. All containerized with **Docker**.
 
 ---
 
 ## Architecture
 
 <img width="1758" height="808" alt="image" src="https://github.com/user-attachments/assets/e4f75d8a-0f98-40fd-a4df-9d6b0192da53" />
+
 
 
 | Component | Technology | Role |
