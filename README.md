@@ -38,11 +38,11 @@ RappelConso API
    PostgreSQL: rappel_conso_table
 ```
 
-## ⏱️ Airflow DAG Tasks
+## Airflow DAG Tasks
 
 | Task | Description |
 
-|---|---|---|
+|---|---|
 
 | `kafka_data_stream` | A Python script fetches product recall records from RappelConso API and produces messages to a Kafka topic. It tracks the last processed date in data/last_processed.json to avoid re-ingesting old records on subsequent runs. |
 
