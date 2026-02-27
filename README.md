@@ -57,8 +57,8 @@ RappelConso API
 
 ## Prerequisites
 
-- Docker Desktop (8 GB RAM minimum recommended)
-- Python 3.8+
+- Docker Desktop
+- Python
 - PostgreSQL + pgAdmin 4
 - Git
 
@@ -99,8 +99,14 @@ docker network create airflow-kafka
 ```bash
 docker-compose up -d
 ```
+<img width="504" height="92" alt="image" src="https://github.com/user-attachments/assets/9efc9881-c154-48e4-b0ff-e75e816aab7b" />
 
-Open Kafka UI at **http://localhost:8800** and create a topic named `rappel_conso` (1 partition, 1 replication factor, time to retain: 1 hour).
+Open Kafka UI at **http://localhost:8800** and create a topic named `rappel_conso` 
+
+with 1 partition, 1 replication factor, time to retain: 3600000 (1 hour).
+
+<img width="344" height="241" alt="image" src="https://github.com/user-attachments/assets/c4db5e09-d4c4-4c57-a728-4092a933c58a" />
+
 
 ### 6. Build Spark Docker image
 
@@ -123,6 +129,8 @@ docker compose -f docker-compose-airflow.yaml up -d
 ```
 
 Open Airflow UI at **http://localhost:8080** (username: `airflow`, password: `airflow`).
+
+You're supposed to see a DAG named `` kafka_spark_dag ``.
 
 ### 9. Trigger the pipeline
 
